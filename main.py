@@ -3,9 +3,10 @@
 '''
 Tul's corp.
 It sounds like an office.
-Office drama.
+office bonanza
 Puzzles, to denote the daily work given to the player.
 Intern -shop-> Job -puzzles-> Management -relationships-> CEO
+
 '''
 
 name = input("Enter the name of the user : ")
