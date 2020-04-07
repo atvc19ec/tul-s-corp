@@ -14,13 +14,7 @@ def title_screen_selection():
         sys.exit(0)
     while option.lower != ["play", "help", "quit"]:
         print("Option chosen is invalid")
-        option = input("> ")
-        if option.lower() == "play":
-            main()
-        elif option.lower() == "help":
-            helpScreen()
-        elif option.lower() == "quit":
-            sys.exit(0)
+        title_screen_selection()
 
 
 def title_screen():
