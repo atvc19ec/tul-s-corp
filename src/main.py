@@ -1,5 +1,7 @@
 import sys
+import os
 import time
+
 
 # We have a title screen that the player will reach before the actual game begins.
 
@@ -14,13 +16,7 @@ def title_screen_selection():
         sys.exit(0)
     while option.lower != ["play", "help", "quit"]:
         print("Option chosen is invalid")
-        option = input("> ")
-        if option.lower() == "play":
-            main()
-        elif option.lower() == "help":
-            helpScreen()
-        elif option.lower() == "quit":
-            sys.exit(0)
+        title_screen_selection()
 
 
 def title_screen():
@@ -35,6 +31,7 @@ def title_screen():
 
 
 def prelude():
+    time.sleep(3)
     print("Huh?")
     time.sleep(1)
     print("We said, how would yo...")
@@ -74,18 +71,31 @@ def displayIntro():
 def main():
     displayIntro()
     dataInput()
-    exit(0)         # for now, the game doesn't have the next stage to go to. so, it terminates here.
+    exit(0)  # for now, the game doesn't have the next stage to go to. so, it terminates here.
 
 
 # not exactly sure whether or not, we should take the name of the character, instead of just going with the flow.
 def dataInput():
-    name = input("Enter the name of your character : ")
-    print("This shall be the tale of", name)
+    player_name = input("Enter the name of your character : ")
+    print("This shall be the tale of {} ".format(player_name))
+
 
 # It would be a great implementation idea, if we could manage to have a calender show up at the start of each day.
 # Kinda showing how the player is progressing.
 
 
+def clear():
+    if os.name == 'posix':
+        os.system("cls")
+    else:
+        os.system("clear")
+
+
 # the code which runs and calls
-prelude()
+print("Skip the prologue?")
+response = input("> ")
+clear()
+if response.lower()[0] is 'n':
+    prelude()
+    clear()
 title_screen()
