@@ -1,6 +1,7 @@
 import sys
 import os
 import time
+import pickle
 
 
 # We have a title screen that the player will reach before the actual game begins.
@@ -58,14 +59,18 @@ def displayIntro():
     print("Having spent the past few years of yours grovelling on the ground,"
           "you end up realising that you can't live on under your dad's roof any longer."
           "\nMore like they kicked you out since you've spent way too much time and way too much wasted effort on "
-          "their part. "
-          "\nYou decide that you want to get out there in the professional world and actually become somebody needed."
+          "their part. ")
+    time.sleep(5)
+    print("\nYou decide that you want to get out there in the professional world and actually become somebody needed."
           "\nYou also realise that you need to get your documents and your resume if you want to apply for a job, "
           "you rush back in and get your files, "
-          "and manage to get out with your files and fortunately, some cash lying in the hall. Running from the deadly "
-          "brunt of the utensils that your mom throws at you, "
-          " you embark on your own business adventure,"
+          "and manage to get out with your files, your laptop bag,"
+          " and fortunately, some cash lying in the hall.\n Running from the deadly brunt of the utensils"
+          " that your mom throws at you, you embark on your own business adventure,"
           " pointing at the gods that this shall be your great business story.")
+    time.sleep(7)
+    player_wallet = 3000
+    pickle.dump(player_wallet, open("player_data.txt", 'wb'))
 
 
 def main():
@@ -78,6 +83,7 @@ def main():
 def dataInput():
     player_name = input("Enter the name of your character : ")
     print("This shall be the tale of {} ".format(player_name))
+    pickle.dump(player_name, open("player_data.txt", 'wb'))
 
 
 # It would be a great implementation idea, if we could manage to have a calender show up at the start of each day.
