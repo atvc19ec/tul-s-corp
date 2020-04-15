@@ -3,7 +3,6 @@ import os
 import time
 import pickle
 
-
 # We have a title screen that the player will reach before the actual game begins.
 
 
@@ -69,13 +68,13 @@ def displayIntro():
           " that your mom throws at you, you embark on your own business adventure,"
           " pointing at the gods that this shall be your great business story.")
     time.sleep(7)
-    player_wallet = 3000
-    pickle.dump(player_wallet, open("player_data.txt", 'wb'))
 
 
 def main():
     displayIntro()
-    dataInput()
+    player_data = {"name": dataInput(), "wallet": 3000}
+    pickle.dump(player_data, open("player_data", 'wb'))
+
     exit(0)  # for now, the game doesn't have the next stage to go to. so, it terminates here.
 
 
@@ -83,7 +82,7 @@ def main():
 def dataInput():
     player_name = input("Enter the name of your character : ")
     print("This shall be the tale of {} ".format(player_name))
-    pickle.dump(player_name, open("player_data.txt", 'wb'))
+    return player_name
 
 
 # It would be a great implementation idea, if we could manage to have a calender show up at the start of each day.

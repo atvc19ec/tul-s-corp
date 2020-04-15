@@ -3,14 +3,14 @@ import pickle
 import os
 
 
-def day_event():
-    player_name, player_wallet = pickle.load("player_data.txt", 'rb')
+def main(path):
+    db = load_data(path)
     print("Knowing the wrath that would be exhibited if you go back home without a job,"
           "\nyou come to the conclusion that you'll be needing to stay at a nearby hotel for the night.")
     sleep(3)
     print("You check your wallet for the money that you have for now."
           "\nApparently, more than you thought.")
-    print("\n> Money in your wallet : {}".format(player_wallet))
+    print("\n> Money in your wallet : {}".format(db["wallet"]))
     print("---")
     print("\nYou notice a droplet fall on your wrist, while proceeding on to the main road, as you look at your watch."
           "\nSeems to be 6 o' clock."
@@ -50,7 +50,7 @@ def day_event():
     print()
     print('Cab Driver: "Gotcha."')
 
-    print("---")
+    print("-" * 20)
     sleep(3)
     print("You look out the car's window as you glance at the large posters.")
     sleep(3)
@@ -90,6 +90,42 @@ def day_event():
         sleep(2)
         print("The roof leaks, the hot water's not really hot water, in fact is that even water?"
               "\nYou resign yourself to your fate and just lie down on the bed.")
+    clear()
+    sleep(5)
+    print("You come to a realisation that maybe, you should at least find a source of income before you doze off.")
+    print("Opening up your laptop, you check up the jobs available around town, for an amazing man such as yourself.")
+    sleep(4)
+    print("There are none.")
+    sleep(3)
+    print("You decide that you might as well just start from the bottom up and go all in by applying as an intern.")
+    print("You apply for a ton of available internships not knowing what offer you might get.")
+    sleep(6)
+    print("It's been a pretty long day.\nYou think about whether all of this is even worth the trouble.")
+    sleep(4)
+    print("A problem for an another day, you think to yourself.")
+    print("-" * 20)
+    if stay_at_hotel:
+        charges = {"Cab Charges": 80, "Hotel Charges": 500}
+    else:
+        charges = {"Cab Charges": 100, "Hotel Charges": 200}
+    stats = day_budget(db, charges)
+    return stats
+
+
+def load_data(path):
+    stats = open(path, 'rb')
+    db = pickle.load(stats)
+    for name in db:
+        print(name, '=>', stats)
+    stats.close()
+    return db
+
+
+def day_budget(db, charges):
+    print(str(db))  # To test whether the file is correct. Cannot check directly since the format is not supported.
+    for i in range(len(db)):
+        db["wallet"] -= (charges["Cab Charges"] + charges["Hotel Charges"])
+    return db
 
 
 def clear():
@@ -97,3 +133,6 @@ def clear():
         os.system('cls')
     else:
         os.system('clear')
+
+
+main('D:\\TulsCorp\\tul-s-corp\\src\\player_data')
