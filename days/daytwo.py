@@ -29,4 +29,36 @@ def dayexe():
         print("Maybe one of these days you'll get lucky? Ah, fat chance.")
         time.sleep(6)
     
-    print("You return back to the room and ")
+    print("You return back to the room and remember about those applications you sent out last night.")
+    print("You go ahead and check on whether you received a reply.")
+    print("Out of the 5 big companies that you applied for, you've received a reply from three of them.")
+    print('\n"WHAT"\n')
+    print("It's Tul's corp.... they replied positively to your application.")
+    print("You look at the other two and think about which one you're going to open first.")
+    print("1. Tul's Corp\n2. Dat Tech\n3. VJB Enterprises")
+    print("You go through all the responses.")
+    tulsresp()
+    datresp()
+    vjresp()
+
+    print("You figure that you can only go to one, considering that they all, unfortunately, take place on the same day.")
+
+    while True:
+        resp = input("> ")
+        if resp.lower() is "inspect":
+            print("Enter the name of the company")
+        elif resp.lower()[0] is 't':
+            print("You decide to take the interview of the largest in the game.\nTul's Corp.")
+        elif resp.lower()[0] is 'd':
+            print("You decide that Dat Tech really has the future in it's hold, being a rival to Tul's Corp.\nIt doesn't fall short of a dream company.")
+        else:
+            print("You decide that the other two just aren't your style. ")
+
+def tulsresp():
+    print()
+
+def datresp():
+    print()
+
+def vjresp():
+    print()
