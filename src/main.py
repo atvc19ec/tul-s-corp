@@ -2,7 +2,7 @@ import sys
 import os
 import time
 import pickle
-
+import days
 # We have a title screen that the player will reach before the actual game begins.
 
 
@@ -74,7 +74,7 @@ def main():
     displayIntro()
     player_data = {"name": dataInput(), "wallet": 3000}
     pickle.dump(player_data, open("player_data", 'wb'))
-
+    dayexe()
     exit(0)  # for now, the game doesn't have the next stage to go to. so, it terminates here.
 
 

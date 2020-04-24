@@ -3,7 +3,7 @@ import pickle
 import os
 
 
-def main(path):
+def dayexe(path):
     db = load_data(path)
     print("Knowing the wrath that would be exhibited if you go back home without a job,"
           "\nyou come to the conclusion that you'll be needing to stay at a nearby hotel for the night.")
@@ -133,6 +133,3 @@ def clear():
         os.system('cls')
     else:
         os.system('clear')
-
-
-main('D:\\TulsCorp\\tul-s-corp\\src\\player_data')
